@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Lite Yun - Dashboard</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="/static/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+          <canvas id="networkChart" width="100%" height="30"></canvas>
+
+</body>
+<script src="/static/Chart.bundle.min.js"></script>
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script>
+  var networkChart = new Chart($("#networkChart").get(0).getContext("2d"), {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label: 'Upload',
+        data: [10, 20, 30, 40],
+        backgroundColor: "rgba(178,178,178,0.5)",
+        borderColor: "rgb(255,255,255)",
+        borderWidth: "5"
+      }, {
+        label: 'Download',
+        data: [40, 30, 20, 10],
+        backgroundColor: "rgba(46,149,255,0.5)",
+        borderColor: "rgb(255,255,255)",
+        borderWidth: "5"
+      }, {
+        label: 'Total',
+        data: [50, 100, 80, 50],
+        fill: true,
+        backgroundColor: "rgba(255,205,86,0.3)",
+        borderColor: "rgb(255,205,86)",
+        pointRadius: "5",
+        type: 'line',
+      }],
+      labels: ['January', 'February', 'March', 'April']
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+          }
+        }]
+      }
+    }
+  });
+
+</script>
+
+
+</html>
