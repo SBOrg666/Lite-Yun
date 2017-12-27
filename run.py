@@ -90,13 +90,18 @@ class SysteminfoHandler(tornado.websocket.WebSocketHandler):
         downdata.append(psutil.net_io_counters().bytes_recv -
                         self.application.initDownload)
         SystemInfo = {'cpu_info': psutil.cpu_percent(percpu=True),
-                      'sys_info': [platform.node(), platform.version(), platform.release(), platform.processor(), cpuinfo.get_cpu_info()['hz_advertised'], psutil.virtual_memory().total, datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%Y-%m-%d %H:%M:%S")],
+                      'sys_info': [platform.node(), platform.version(), platform.release(), platform.processor(),
+                                   cpuinfo.get_cpu_info()['hz_advertised'], psutil.virtual_memory().total,
+                                   datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%Y-%m-%d %H:%M:%S")],
                       'mem_info': [
-            psutil.virtual_memory().used, psutil.virtual_memory().total],
-            'swap_info': [psutil.swap_memory().used, psutil.swap_memory().total],
-            'disk_info': [(partion.mountpoint, psutil.disk_usage(partion.mountpoint).used, psutil.disk_usage(partion.mountpoint).total) for partion in psutil.disk_partitions()],
-            'log_info': '<br>'.join(sh.tail('-n 20', '/var/log/syslog', _iter=True)),
-            'network_info': [self.getRecentMonth(), updata, downdata, [data[0] + data[1] for data in zip(updata, downdata)]]}
+                          psutil.virtual_memory().used, psutil.virtual_memory().total],
+                      'swap_info': [psutil.swap_memory().used, psutil.swap_memory().total],
+                      'disk_info': [(partion.mountpoint, psutil.disk_usage(partion.mountpoint).used,
+                                     psutil.disk_usage(partion.mountpoint).total) for partion in
+                                    psutil.disk_partitions()],
+                      'log_info': '<br>'.join(sh.tail('-n 20', '/var/log/syslog', _iter=True)),
+                      'network_info': [self.getRecentMonth(), updata, downdata,
+                                       [data[0] + data[1] for data in zip(updata, downdata)]]}
         self.write_message(SystemInfo)
 
     def on_message(self, meg):
@@ -152,7 +157,7 @@ class downloadHandler(tornado.web.RequestHandler):
     def post(self):
         items = json.loads(self.request.body.decode('utf8'))
         tmpfile = os.path.join(os.path.split(__file__)[
-            0], uuid.uuid4().hex + '.zip')
+                                   0], uuid.uuid4().hex + '.zip')
         yield self.zipCompress(items, tmpfile)
         self.write(os.path.split(tmpfile)[1])
 
@@ -162,7 +167,7 @@ class downloadHandler(tornado.web.RequestHandler):
         tmpfile = self.get_argument('name', None)
         if tmpfile:
             tmpfile = os.path.join(os.path.split(__file__)[
-                0], urllib.parse.unquote(tmpfile))
+                                       0], urllib.parse.unquote(tmpfile))
             self.set_header('Content-Type', 'application/octet-stream')
             self.set_header('Content-Disposition',
                             'attachment; filename="files.zip"')
@@ -205,9 +210,10 @@ class pathHandler(tornado.web.RequestHandler):
                 urlnames = ['/path' + '/' + dirname for dirname in dirnames]
             else:
                 urlnames = ['/path' + path + '/' +
-                            dirname for dirname in dirnames]    # get urls
+                            dirname for dirname in dirnames]  # get urls
 
-            permissions = ([oct(stat.S_IMODE(os.stat(os.path.join(path, dirname)).st_mode))[-3:] for dirname in dirnames], [
+            permissions = (
+            [oct(stat.S_IMODE(os.stat(os.path.join(path, dirname)).st_mode))[-3:] for dirname in dirnames], [
                 oct(stat.S_IMODE(os.stat(os.path.join(path, filename)).st_mode))[-3:] for filename in filenames])
 
             sizes = ([os.stat(os.path.join(path, dirname)).st_size for dirname in dirnames], [
@@ -219,7 +225,8 @@ class pathHandler(tornado.web.RequestHandler):
             groups = ([grp.getgrgid(os.stat(os.path.join(path, dirname)).st_gid).gr_name for dirname in dirnames], [
                 grp.getgrgid(os.stat(os.path.join(path, filename)).st_gid).gr_name for filename in filenames])
 
-            mtimes = ([time.asctime(time.localtime(os.stat(os.path.join(path, dirname)).st_mtime)) for dirname in dirnames], [
+            mtimes = (
+            [time.asctime(time.localtime(os.stat(os.path.join(path, dirname)).st_mtime)) for dirname in dirnames], [
                 time.asctime(time.localtime(os.stat(os.path.join(path, filename)).st_mtime)) for filename in filenames])
 
             accesses = ([os.access(os.path.join(path, dirname), os.R_OK) for dirname in dirnames], [
