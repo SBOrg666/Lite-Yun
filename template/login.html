@@ -21,15 +21,15 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-            <form action="/login" method="post">
+            <form id="form">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp"
+                    <input class="form-control" id="exampleInputEmail1" name="username" type="email" aria-describedby="emailHelp"
                            placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+                    <input class="form-control" id="exampleInputPassword1" name="password" type="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <div class="form-check">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 {% module xsrf_form_html() %}
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                <input id="submit" type="button" value="Login" class="btn btn-primary btn-block">
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="register.html">Register an Account</a>
@@ -53,5 +53,38 @@
 <!-- Core plugin JavaScript-->
 <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
+<script>
+        function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+$.urlParam = function(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	return results[1] || 0;
+}
+
+    $(function () {
+        $("#submit").click(function(){
+            $.ajax(
+                {
+                url: "/login",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: $('#form').serialize(),
+                type: "post",
+                success: function (result) {
+                    if(result==="ok"){
+                        window.location.href=location.protocol+"//"+location.host+decodeURIComponent($.urlParam('next'));
+                    }
+                    else {
+                        alert(result);
+                    }
+                }
+            }
+            )
+        })
+    })
+</script>
 
 </html>

@@ -36,12 +36,6 @@
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
-            <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-              <a class="nav-link" href="/charts.html">
-                <i class="fa fa-fw fa-area-chart"></i>
-                <span class="nav-link-text">Charts</span>
-              </a>
-            </li> -->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                 <a class="nav-link" href="/processes.html">
                     <i class="fa fa-fw fa-table"></i>
@@ -52,6 +46,12 @@
                 <a class="nav-link" href="/path/">
                     <i class="fa fa-fw fa-tree"></i>
                     <span class="nav-link-text">Dir Tree</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                <a class="nav-link" href="/vnc.html">
+                    <i class="fa fa-fw fa-terminal"></i>
+                    <span class="nav-link-text">VNC Terminal</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -212,6 +212,7 @@
                     <button class="btn btn-primary" data-complete-text="Download" id="download_btn">Download</button>
                     {% if writable %}
                     <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn">Upload</button>
+                    <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn">Delete</button>
                     <input type="file" name="files" data-url="/upload" id="upload_input"
                            style="visibility:hidden;height:0;width:0;display:block"
                            multiple>
@@ -220,6 +221,8 @@
                 </div>
                 {% else %}
                 <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn" disabled="disabled">Upload
+                </button>
+                <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn" disabled="disabled">Delete
                 </button>
                 {% end %}
                 </p>
@@ -240,8 +243,7 @@
                             <span class="col-2">Date Modified</span>
                         </div>
                     </div>
-                    {% for url,dir,permission,size,owner,group,mtime,access in
-                    zip(urlnames,dirnames,permissions[0],sizes[0],owners[0],groups[0],mtimes[0],accesses[0])%}
+                    {% for url,dir,permission,size,owner,group,mtime,access in zip(urlnames,dirnames,permissions[0],sizes[0],owners[0],groups[0],mtimes[0],accesses[0])%}
                     <div class="list-group-item">
                         <div class="row">
                 <span class="col-3" style="position:relative;">
@@ -265,8 +267,7 @@
                             <span class="col-2">{{ mtime}}</span>
                         </div>
                     </div>
-                    {% end %} {% for filename,permission,size,owner,group,mtime, access in
-                    zip(filenames,permissions[1],sizes[1],owners[1],groups[1],mtimes[1],accesses[1])%}
+                    {% end %} {% for filename,permission,size,owner,group,mtime, access in zip(filenames,permissions[1],sizes[1],owners[1],groups[1],mtimes[1],accesses[1])%}
                     <div class="list-group-item">
                         <div class="row">
                 <span class="col-3" style="position:relative;">
@@ -392,7 +393,7 @@
             if ($(this).next().children().eq(0).attr("href")) {
                 urls.add($(this).next().children().eq(0).attr("href").substring(5));
             } else {
-                var p = $("#path").html().substring(7);
+                var p = $("#path").html().substring(6);
                 if (p === "/") {
                     urls.add(p + $(this).next().children().eq(0).html());
                 } else {
@@ -406,7 +407,7 @@
             if ($(this).next().children().eq(0).attr("href")) {
                 urls.delete($(this).next().children().eq(0).attr("href").substring(5));
             } else {
-                var p = $("#path").html().substring(7);
+                var p = $("#path").html().substring(6);
                 if (p === "/") {
                     urls.delete(p + $(this).next().children().eq(0).html());
                 } else {
@@ -443,8 +444,33 @@
         }
     })
 
+        $("#delete_btn").click(function () {
+        if (urls.size) {
+            $.ajax({
+                url: "/delete",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: JSON.stringify(Array.from(urls)),
+                type: "post",
+                success: function (result) {
+                    ;
+                }
+            });
+        } else {
+            $(function () {
+                $('#myModal').modal({
+                    keyboard: true
+                })
+            });
+        }
+    })
+
     $("#upload_input").fileupload({
         url: "/upload",
+        headers: {
+            "X-XSRFToken": getCookie("_xsrf"),
+        },
         maxFileSize: 99 * 1024 * 1024,
         formData: {
             'path': $("#path").html().substring(6)
