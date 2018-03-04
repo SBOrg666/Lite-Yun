@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Lite Yun - VNC</title>
+    <title>Lite Yun - Authors</title>
     <!-- Bootstrap core CSS-->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -207,6 +207,28 @@
         width: 100%;
         min-height: calc(100vh - 56px - 56px - 1rem - 4.5rem);
     }
+
+    #hj {
+        width: 100px;
+        height: 100px;
+        background-image: url("/static/images/hj.png");
+        background-size: cover;
+        display: block;
+        border-radius: 50%;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+    }
+
+    #g {
+        width: 100px;
+        height: 100px;
+        background-image: url("/static/images/g.png");
+        background-size: cover;
+        display: block;
+        border-radius: 50%;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+    }
 </style>
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -215,59 +237,88 @@
             <li class="breadcrumb-item">
                 <a href="index.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">VNC Terminal</li>
+            <li class="breadcrumb-item active">Authors</li>
         </ol>
         <div class="row">
-            <div class="col-12">
-                <iframe id="inpage" src="/static/noVNC/vnc.html?host=localhost&port=6080" frameborder="0"
-                        scrolling="no"></iframe>
-                <!--width="1600px" height="700px"-->
-            </div>
-        </div>
-    </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-        <div class="container">
-            <div class="text-center">
-                <small>Copyright © Lite Yun 2018</small>
-            </div>
-        </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login?next=%2F">Logout</a>
+            <div class="col-lg-4">
+                <!-- Example Bar Chart Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                    <div class="card-body">
+                        <div id="hj"></div>
+                        <div>
+                            Name: Yunwei Zhang<br>
+                            Student ID: 151310215<br>
+                            Major: Computer science and technology<br>
+                            Tel: 13122161202<br>
+                            E-mail: 735369269@qq.com<br>
+                            QQ: 735369269
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-user-o"></i>
+                    </div>
+                    <div class="card-body">
+                        <div id="g"></div>
+                        <div>
+                            Name: Xiaojun Gu<br>
+                            Student ID: 151310216<br>
+                            Major: Information security<br>
+                            Tel: 13651648690<br>
+                            E-mail: chenny_gu@foxmail.com<br>
+                            QQ: 841233696
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Lite Yun 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login?next=%2F">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="/static/js/sb-admin.min.js"></script>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="/static/js/sb-admin.min.js"></script>
-    <script>
-        $("#inpage").attr("src", "/static/noVNC/vnc.html?host=" + location.host + "&port=6080");
-    </script>
-</div>
 </body>
 
 </html>

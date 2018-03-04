@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Lite Yun - VNC</title>
+    <title>Lite Yun - About</title>
     <!-- Bootstrap core CSS-->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -215,13 +215,21 @@
             <li class="breadcrumb-item">
                 <a href="index.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">VNC Terminal</li>
+            <li class="breadcrumb-item active">About</li>
         </ol>
         <div class="row">
             <div class="col-12">
-                <iframe id="inpage" src="/static/noVNC/vnc.html?host=localhost&port=6080" frameborder="0"
-                        scrolling="no"></iframe>
-                <!--width="1600px" height="700px"-->
+                <h1>About</h1>
+                <p>This web application is used to manage remote server easily. It can show server load in real time,
+                    list and manage processes, list directory and transfer files/directories and provide VNC access for
+                    emergency use. </p>
+                <p>The UI is succinct and practical, so anyone can managed to use it without instruction. Just simply
+                    click on a label, the information you need is displayed on your screen. At the same time, responsive
+                    UI design will provide smooth experience for mobile terminal, making it possible to monitor your
+                    server using phone or pad.</p>
+                <p>This web application depends heavily on websockets, which is supported by most modern web browser.
+                    Thanks to websockets, less resources is needed. Most of the arguments(fresh rate etc.) are
+                    changeable, you can change them as you wish.</p>
             </div>
         </div>
     </div>
@@ -264,9 +272,6 @@
     <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/static/js/sb-admin.min.js"></script>
-    <script>
-        $("#inpage").attr("src", "/static/noVNC/vnc.html?host=" + location.host + "&port=6080");
-    </script>
 </div>
 </body>
 

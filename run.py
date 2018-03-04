@@ -203,7 +203,7 @@ class ProcessesInfoHandler(tornado.websocket.WebSocketHandler):
         for proc in psutil.process_iter():
             try:
                 pinfo = proc.as_dict(
-                    attrs=['pid', 'name', 'username', 'exe', 'cpu_percent', 'memory_percent', 'create_time','status'])
+                    attrs=['pid', 'name', 'username', 'exe', 'cpu_percent', 'memory_percent', 'create_time', 'status'])
             except psutil.NoSuchProcess:
                 pass
             else:
@@ -221,14 +221,14 @@ class ProcessesInfoHandler(tornado.websocket.WebSocketHandler):
                     except psutil.AccessDenied:
                         self.write_message('AccessDenied')
                     else:
-                        self.write_message(str(p.pid)+' succeed')
+                        self.write_message(str(p.pid) + ' succeed')
                 elif info[1] == '2':
                     try:
                         p.resume()
                     except psutil.AccessDenied:
                         self.write_message('AccessDenied')
                     else:
-                        self.write_message(str(p.pid)+' succeed')
+                        self.write_message(str(p.pid) + ' succeed')
                 elif info[1] == '3':
                     try:
                         p.terminate()
@@ -314,6 +314,26 @@ class uploadHandler(tornado.web.RequestHandler):
             self.write({'name': os.path.join(upload_path, file_name)})
 
 
+class aboutHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        loggedin = self.get_secure_cookie('login', None)
+        return loggedin
+
+    @tornado.web.authenticated
+    def get(self):
+        self.render("about.html")
+
+
+class authorsHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        loggedin = self.get_secure_cookie('login', None)
+        return loggedin
+
+    @tornado.web.authenticated
+    def get(self):
+        self.render("authors.html")
+
+
 class pathHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         loggedin = self.get_secure_cookie('login', None)
@@ -380,6 +400,8 @@ class Application(tornado.web.Application):
             (r'/processesInfo', ProcessesInfoHandler),
             (r'/download', downloadHandler),
             (r'/upload', uploadHandler),
+            (r'/about', aboutHandler),
+            (r'/authors', authorsHandler),
             (r'/path', tornado.web.RedirectHandler, {'url': '/path/'}),
             (r'/path/(.*)', pathHandler)]
 
