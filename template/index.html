@@ -594,10 +594,16 @@
 
         var cpuaverage = average(callback.cpu_info).toFixed(1);
         var disk = callback.disk_info;
-        var diskaverage = (100*(disk[0][1]+disk[1][1]+disk[2][1])/(disk[0][2]+disk[1][2]+disk[2][2])).toFixed(1);
+        var l=0,r=0;
+        for(var i=0;i<disk.length;i++){
+            l += disk[i][1];
+            r += disk[i][2];
+        }
+        var diskaverage = (100*l/r).toFixed(1);
         var mem = callback.mem_info;
         var memoryaverage = (100*mem[0]/mem[1]).toFixed(1);
-        var network = (callback.network_info[3][5]/1024/1024).toFixed(1);
+        var netw = callback.network_info;
+        var network = (netw[netw.length-1][5]/1024/1024).toFixed(1);
 
         $(".content-wrapper .row:first .card-body").eq(0).children(".mr-5").html("CPU&nbsp;&nbsp;&nbsp;&nbsp;"+cpuaverage+"%");
         $(".content-wrapper .row:first .card-body").eq(1).children(".mr-5").html("Memory&nbsp;&nbsp;&nbsp;&nbsp;"+memoryaverage+"%");
