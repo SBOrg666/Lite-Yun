@@ -16,6 +16,12 @@
     <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <style>
+        #dataTable .create_time{
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -46,7 +52,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-                				<h4 class="modal-title" id="myModalLabel">
+                				<h4 class="modal-title" id="">
 					Info
 				</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -240,11 +246,7 @@
     </div>
 </nav>
 
-    <style>
-        #dataTable .create_time{
-            display: none;
-        }
-    </style>
+
 
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -280,13 +282,13 @@
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>PID</th>
+                            <th >PID</th>
                             <td>Name</td>
                             <th>Owner</th>
                             <th>Command</th>
                             <th>CPU usage(%)</th>
                             <th>Memory usage(%)</th>
-                            <th>Status</th>
+                            <th >Status</th>
                             <th>Suspend</th>
                             <th>Terminate</th>
                             <th>Kill</th>
@@ -294,25 +296,25 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr>
-                            <td>PID</td>
-                            <td>Name</td>
-                            <td>Owner</td>
-                            <td>Command</td>
-                            <td>CPU</td>
-                            <td>Memory</td>
-                            <td>Status</td>
-                            <td>
-                                <button class="btn btn-success" disabled="disabled">Suspend</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning" disabled="disabled">Terminate</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger" disabled="disabled">Kill</button>
-                            </td>
-                            <th>Create Time</th>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<td class="pid">PID</td>-->
+                            <!--<td>Name</td>-->
+                            <!--<td>Owner</td>-->
+                            <!--<td>Command</td>-->
+                            <!--<td>CPU</td>-->
+                            <!--<td>Memory</td>-->
+                            <!--<td class="status">Status</td>-->
+                            <!--<td>-->
+                                <!--<button class="btn btn-success" disabled="disabled">Suspend</button>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<button class="btn btn-warning" disabled="disabled">Terminate</button>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<button class="btn btn-danger" disabled="disabled">Kill</button>-->
+                            <!--</td>-->
+                            <!--<th class="create_time">Create Time</th>-->
+                        <!--</tr>-->
                         </tbody>
                     </table>
                 </div>
@@ -371,17 +373,38 @@
 
     <script>
         var ws = new WebSocket("ws://" + location.host + "/processesInfo");
-    $(function(){
+
         // var ws = new WebSocket("ws://" + location.host + "/processesInfo");
+
         ws.onmessage = function (e) {
             if(e.data=="AccessDenied"){
                 $('#accessdeny').modal();
                 return;
+            }else{
+                if(e.data=="succeed"){
+                    $('#succeed').modal();
+                    return;
+                }
+                var stat = e.data.split(" ")[1];
+                var pid = e.data.split(" ")[0];
+                if(stat=="succeed"){
+
+                    var tr = $("#dataTable tbody tr .pid"+pid).parent();
+                    var btn = tr.children(".btn:first");
+                    if(btn.html()=="Suspend"){
+                        btn.html("Resume");
+                        btn.attr("class","btn btn-success");
+                    }else{
+                        btn.html("Resume");
+                        btn.attr("class","btn btn-info");
+                    }
+
+                    $('#succeed').modal();
+                    return;
+                }
             }
-                        if(e.data=="succeed"){
-                $('#succeed').modal();
-                return;
-            }
+
+
             var callback = $.parseJSON(e.data);
             var data = callback.ProcessInfo;
             //alert(callback.ProcessInfo[0].name)
@@ -389,54 +412,25 @@
 
             var table = $("#dataTable").dataTable();
             table.fnClearTable();
-            // table.bootstrapTable("removeAll");
             for(var i=0;i<data.length;i++){
-                var tr = $("<tr></tr>");
-                var td1 = $("<td></td>");
-                td1.html(data[i].pid);
-                tr.append(td1);
-                var td2 = $("<td></td>");
-                td2.html(data[i].name);
-                tr.append(td2);
-                var td3 = $("<td></td>");
-                td3.html(data[i].username);
-                tr.append(td3);
-                var td4 = $("<td></td>");
-                td4.html(data[i].exe);
-                tr.append(td4);
-                var td5 = $("<td></td>");
-                td5.html(data[i].cpu_percent);
-                tr.append(td5);
-                var td6 = $("<td></td>");
-                td6.html(data[i].memory_percent);
-                tr.append(td6);
+                var cl="btn-success",word="Suspend";
+                if(data[i].status=="stopped"){
+                    cl = "btn-info";
+                    word = "Resume";
+                }
 
-                var td7 = $("<td></td>");
-                td7.html(data[i].status);
-                tr.append(td7);
-
-                tr.append("<td><button class='btn btn-success'>Suspend</button></td><td><button class='btn btn-warning'>Terminate</button></td><td><button class='btn btn-danger'>Kill</button></td>\n");
-                tr.append("<td class='create_time'>"+data[i].create_time+"</td>");
+                var tr = $("<tr><td class='pid"+data[i].pid+"'>"+data[i].pid+"</td><td>"+data[i].name+"</td><td>"+data[i].username+"</td>" +
+                    "<td>"+data[i].exe+"</td><td>"+data[i].cpu_percent+"</td><td>"+data[i].memory_percent+"</td>" +
+                    "<td class='status'>"+data[i].status+"</td><td><button class='btn "+cl+"'>"+word+"</button></td>" +
+                    "<td><button class='btn btn-warning'>Terminate</button></td><td><button class='btn btn-danger'>Kill</button></td>" +
+                    "<td class='create_time'>"+data[i].create_time+"</td></tr>");
 
                 table.fnAddTr(tr[0]);
 
-                // var row = {
-                //     pid:data[i].pid,
-                //     name:data[i].name,
-                //     owner:data[i].username,
-                //     command:data[i].exe,
-                //     cpu:data[i].cpu_percent,
-                //     memeory:data[i].memoery_precent,
-                //     suspend:"Suspend",
-                //     terminate:"Terminate",
-                //     kill:"Kill"
-                // };
-                // table.bootstrapTable("insertRow",{index:0,row:row});
             }
-
             $('#dataTable').DataTable();
         };
-    })
+
 
     function Click(object,option){
         if(option!=1 && option!=2 && option!=3){
@@ -457,6 +451,9 @@
 
     $("body").on("click",".btn-success",function(){
         Click(this,1);
+    });
+    $("body").on("click",".btn-info",function(){
+        Click(this,2);
     });
     $("body").on("click",".btn-warning",function(){
         Click(this,3);

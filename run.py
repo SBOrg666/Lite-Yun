@@ -221,14 +221,14 @@ class ProcessesInfoHandler(tornado.websocket.WebSocketHandler):
                     except psutil.AccessDenied:
                         self.write_message('AccessDenied')
                     else:
-                        self.write_message('succeed')
+                        self.write_message(str(p.pid)+' succeed')
                 elif info[1] == '2':
                     try:
                         p.resume()
                     except psutil.AccessDenied:
                         self.write_message('AccessDenied')
                     else:
-                        self.write_message('succeed')
+                        self.write_message(str(p.pid)+' succeed')
                 elif info[1] == '3':
                     try:
                         p.terminate()
