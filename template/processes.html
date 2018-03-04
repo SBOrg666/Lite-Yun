@@ -357,11 +357,15 @@
 
         ws.onmessage = function (e) {
             if (e.data == "AccessDenied") {
-                $('#accessdeny').modal();
+                $('#accessdeny').modal({
+                    keyboard: true
+                });
                 return;
             } else {
                 if (e.data == "succeed") {
-                    $('#succeed').modal();
+                    $('#succeed').modal({
+                    keyboard: true
+                });
                     return;
                 }
                 var stat = e.data.split(" ")[1];
@@ -378,7 +382,9 @@
                         btn.attr("class", "btn btn-info");
                     }
 
-                    $('#succeed').modal();
+                    $('#succeed').modal({
+                    keyboard: true
+                });
                     return;
                 }
             }

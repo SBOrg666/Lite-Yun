@@ -20,6 +20,52 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+<div class="modal fade" id="upload_done" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Info
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                Upload succeed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="delete_done" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Info
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                Delete succeed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="/index.html">Lite Yun</a>
@@ -454,7 +500,9 @@
                 data: JSON.stringify(Array.from(urls)),
                 type: "post",
                 success: function (result) {
-                    ;
+                    $('#delete_done').modal({
+                        keyboard: true
+                    })
                 }
             });
         } else {
@@ -490,7 +538,13 @@
                 alert(currentFile.name + currentFile.error);
             }
         }
-    })
+    }).bind('fileuploadprogressall', function (e, data) {
+        if (data.loaded == data.total) {
+            $('#upload_done').modal({
+                keyboard: true
+            })
+        }
+    });
 
     $("#upload_input").bind('fileuploadstop', function (e) {
         $("#upload_input").after();
@@ -499,6 +553,12 @@
     $("#upload_btn").click(function () {
         $("#upload_input").click();
     })
+
+    $(function () {
+        $('.modal').on('hide.bs.modal', function () {
+            location.reload();
+        })
+    });
 </script>
 
 </html>
