@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9f34360c-32b2-448f-af48-f21614ad688f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/template/index.html" afterPath="$PROJECT_DIR$/template/index.html" />
+      <change beforePath="$PROJECT_DIR$/template/vnc.html" afterPath="$PROJECT_DIR$/template/vnc.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/LiteYun$test.coverage" NAME="test Coverage Results" MODIFIED="1514635894761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LiteYun$run.coverage" NAME="run Coverage Results" MODIFIED="1520073673041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lite_Yun$run.coverage" NAME="run Coverage Results" MODIFIED="1520144816526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lite_Yun$run.coverage" NAME="run Coverage Results" MODIFIED="1520148041574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -62,8 +62,8 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="365" column="0" lean-forward="true" selection-start-line="365" selection-start-column="0" selection-end-line="365" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="372" column="38" lean-forward="true" selection-start-line="372" selection-start-column="38" selection-end-line="372" selection-end-column="38" />
               <folding>
                 <element signature="e#48#61#0" expanded="true" />
                 <marker date="1520144812027" expanded="true" signature="1122:1164" ph="SELECT PASSW... USER" />
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vnc.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vnc.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template/vnc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4532">
-              <caret line="206" column="57" lean-forward="false" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
+            <state relative-caret-position="264">
+              <caret line="258" column="63" lean-forward="true" selection-start-line="258" selection-start-column="63" selection-end-line="258" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
       <file leaf-file-name="vnc.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/noVNC/vnc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1738">
+            <state relative-caret-position="-4709">
               <caret line="79" column="11" lean-forward="false" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
               <folding />
             </state>
@@ -111,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="597" column="39" lean-forward="true" selection-start-line="597" selection-start-column="39" selection-end-line="597" selection-end-column="39" />
+            <state relative-caret-position="643">
+              <caret line="580" column="0" lean-forward="false" selection-start-line="580" selection-start-column="0" selection-end-line="583" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -124,8 +124,8 @@
       <file leaf-file-name="processes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/processes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1914">
-              <caret line="358" column="79" lean-forward="false" selection-start-line="358" selection-start-column="79" selection-end-line="358" selection-end-column="79" />
+            <state relative-caret-position="374">
+              <caret line="374" column="54" lean-forward="false" selection-start-line="374" selection-start-column="41" selection-end-line="374" selection-end-column="54" />
               <folding>
                 <element signature="e#1363#1370#0" expanded="true" />
                 <element signature="e#2006#2013#0" expanded="true" />
@@ -181,9 +181,9 @@
         <option value="$PROJECT_DIR$/template/path.html" />
         <option value="$PROJECT_DIR$/static/noVNC/utils/websockify/websockify.py" />
         <option value="$PROJECT_DIR$/template/processes.html" />
-        <option value="$PROJECT_DIR$/template/vnc.html" />
-        <option value="$PROJECT_DIR$/template/index.html" />
         <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/template/index.html" />
+        <option value="$PROJECT_DIR$/template/vnc.html" />
       </list>
     </option>
   </component>
@@ -213,6 +213,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,7 +255,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -394,7 +394,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991462" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21664888" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21664888" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13645834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -711,7 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -732,22 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/noVNC/vnc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="79" column="11" lean-forward="false" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/vnc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4532">
-          <caret line="206" column="57" lean-forward="false" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/sb-admin-datatables.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -760,8 +743,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/template/processes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1914">
-          <caret line="358" column="79" lean-forward="false" selection-start-line="358" selection-start-column="79" selection-end-line="358" selection-end-column="79" />
+        <state relative-caret-position="374">
+          <caret line="374" column="54" lean-forward="false" selection-start-line="374" selection-start-column="41" selection-end-line="374" selection-end-column="54" />
           <folding>
             <element signature="e#1363#1370#0" expanded="true" />
             <element signature="e#2006#2013#0" expanded="true" />
@@ -771,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="365" column="0" lean-forward="true" selection-start-line="365" selection-start-column="0" selection-end-line="365" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="372" column="38" lean-forward="true" selection-start-line="372" selection-start-column="38" selection-end-line="372" selection-end-column="38" />
           <folding>
             <element signature="e#48#61#0" expanded="true" />
             <marker date="1520144812027" expanded="true" signature="1122:1164" ph="SELECT PASSW... USER" />
@@ -780,10 +763,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/noVNC/vnc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4709">
+          <caret line="79" column="11" lean-forward="false" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="597" column="39" lean-forward="true" selection-start-line="597" selection-start-column="39" selection-end-line="597" selection-end-column="39" />
+        <state relative-caret-position="643">
+          <caret line="580" column="0" lean-forward="false" selection-start-line="580" selection-start-column="0" selection-end-line="583" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/vnc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="258" column="63" lean-forward="true" selection-start-line="258" selection-start-column="63" selection-end-line="258" selection-end-column="63" />
           <folding />
         </state>
       </provider>

@@ -218,7 +218,7 @@
         </ol>
         <div class="row">
             <div class="col-12">
-                <iframe src="/static/noVNC/vnc.html?host=localhost&port=6080" frameborder="0" scrolling="no" ></iframe>
+                <iframe id="inpage" src="/static/noVNC/vnc.html?host=localhost&port=6080" frameborder="0" scrolling="no" ></iframe>
                 <!--width="1600px" height="700px"-->
             </div>
         </div>
@@ -262,6 +262,9 @@
     <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/static/js/sb-admin.min.js"></script>
+    <script>
+        $("#inpage").attr("src","/static/noVNC/vnc.html?host="+location.host+"&port=6080");
+    </script>
 </div>
 </body>
 
