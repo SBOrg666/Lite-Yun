@@ -456,7 +456,6 @@ class Application(tornado.web.Application):
 if __name__ == '__main__':
     tornado.options.parse_command_line()
     app = Application()
-    server = tornado.httpserver.HTTPServer(app,ssl_options={"certfile": os.path.join(os.path.abspath("."), "119.23.51.163.xip.io_ssl.crt"),
-           "keyfile": os.path.join(os.path.abspath("."), "119.23.51.163.xip.io_key.key"),})
+    server = tornado.httpserver.HTTPServer(app)
     app.listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.current().start()
