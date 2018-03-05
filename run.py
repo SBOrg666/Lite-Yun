@@ -48,6 +48,9 @@ class LoginHandler(tornado.web.RequestHandler):
     def post(self):
         USERNAME = self.get_argument('username', '')
         PASSWORD = self.get_argument('password', '')
+        if USERNAME == '':
+            self.write('Login Failed')
+            return
         cursor = self.application.conn.cursor()
         cursor.execute('SELECT PASSWORD FROM USER WHERE NAME=:name', {'name': USERNAME})
         if cursor.fetchone()[0] == PASSWORD:
@@ -377,7 +380,7 @@ class pathHandler(tornado.web.RequestHandler):
 
         urlnames, permissions, sizes, owners, groups, mtimes, accesses = getFileInfo(
             path, dirnames, filenames)
-        self.render('path.html', title="path on server",
+        self.render('path.html',
                     header='path: ' + path, urlnames=urlnames,
                     dirnames=dirnames, filenames=filenames,
                     permissions=permissions, sizes=sizes,
@@ -453,6 +456,7 @@ class Application(tornado.web.Application):
 if __name__ == '__main__':
     tornado.options.parse_command_line()
     app = Application()
-    server = tornado.httpserver.HTTPServer(app)
+    server = tornado.httpserver.HTTPServer(app,ssl_options={"certfile": os.path.join(os.path.abspath("."), "119.23.51.163.xip.io_ssl.crt"),
+           "keyfile": os.path.join(os.path.abspath("."), "119.23.51.163.xip.io_key.key"),})
     app.listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.current().start()

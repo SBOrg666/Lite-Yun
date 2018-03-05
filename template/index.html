@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -175,6 +176,7 @@
             <!--<div class="dropdown-divider"></div>-->
             <!--<a class="dropdown-item small" href="#">View all alerts</a>-->
             <!--</div>-->
+
             <!--</li>-->
             <!--<li class="nav-item">-->
             <!--<form class="form-inline my-2 my-lg-0 mr-lg-2">-->
@@ -207,7 +209,8 @@
         <!-- Icon Cards-->
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card
+ text-white bg-primary o-hidden h-100">
                     <div class="card-body">
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-comments"></i>
@@ -299,6 +302,7 @@
                     <div class="card-header">
                         <i class="fa fa-pie-chart"></i> Memory
                     </div>
+
                     <div class="card-body">
                         <canvas id="memChart" width="100%" height="30"></canvas>
                     </div>
@@ -392,6 +396,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login?next=%2F">Logout</a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -409,66 +414,116 @@
     <!-- Custom scripts for all pages-->
     <script src="/static/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="/static/js/sb-admin-datatables.min.js"></script>
+    <!--<script src="/static/js/sb-admin-datatables.min.js"></script>-->
 </div>
 </body>
 <script>
-    var networkChart = new Chart($("#networkChart").get(0).getContext("2d"), {
-        type: 'bar',
-        data: {
-            datasets: [{
-                label: 'Upload',
-                data: [0, 0, 0, 0, 0, 0],
-                backgroundColor: "rgba(178,178,178,0.5)",
-                borderColor: "rgb(255,255,255)",
-                borderWidth: "5"
-            }, {
-                label: 'Download',
-                data: [0, 0, 0, 0, 0, 0],
-                backgroundColor: "rgba(46,149,255,0.5)",
-                borderColor: "rgb(255,255,255)",
-                borderWidth: "5"
-            }, {
-                label: 'Total',
-                data: [0, 0, 0, 0, 0, 0],
-                fill: true,
-                backgroundColor: "rgba(255,205,86,0.3)",
-                borderColor: "rgb(255,205,86)",
-                pointRadius: "5",
-                type: 'line',
-            }],
-            labels: ['1', '2', '3', '4', '5', '6']
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                    }
-                }]
-            },
-        }
-    });
+    var ws = new WebSocket("ws://" + location.host + "/Systeminfo");
 
-    var cpuChart = new Chart($("#cpuChart").get(0).getContext("2d"), {
-        type: 'horizontalBar',
-        data: {
-            datasets: [{
-                data: [0],
-                backgroundColor: "rgba(46,255,135,0.5)",
-                label: "usage"
-            }],
-            labels: ['Core1']
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                    }
-                }]
+         networkChart = new Chart($("#networkChart").get(0).getContext("2d"), {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'Upload',
+                    data: [0, 0, 0, 0, 0, 0],
+                    backgroundColor: "rgba(178,178,178,0.5)",
+                    borderColor: "rgb(255,255,255)",
+                    borderWidth: "5"
+                }, {
+                    label: 'Download',
+                    data: [0, 0, 0, 0, 0, 0],
+                    backgroundColor: "rgba(46,149,255,0.5)",
+                    borderColor: "rgb(255,255,255)",
+                    borderWidth: "5"
+                }, {
+                    label: 'Total',
+                    data: [0, 0, 0, 0, 0, 0],
+                    fill: true,
+                    backgroundColor: "rgba(255,205,86,0.3)",
+                    borderColor: "rgb(255,205,86)",
+                    pointRadius: "5",
+                    type: 'line',
+                }],
+                labels: ['1', '2', '3', '4', '5', '6']
             },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }]
+                },
+            }
+        });
+
+         cpuChart = new Chart($("#cpuChart").get(0).getContext("2d"), {
+            type: 'horizontalBar',
+            data: {
+                datasets: [{
+                    data: [0],
+                    backgroundColor: "rgba(46,255,135,0.5)",
+                    label: "usage"
+                }],
+                labels: ['Core1']
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                        }
+                    }]
+                },
+                legend: {
+                    onClick: function (e) {
+                        e.stopPropagation();
+                    },
+                },
+            }
+        });
+
+         memChart = new Chart($("#memChart").get(0).getContext("2d"), {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [0, 0],
+                    backgroundColor: ["rgba(255,233,46,0.5)", "rgba(220,220,220,0.5)"],
+                }, {
+                    data: [0, 0],
+                    backgroundColor: ["rgba(255,233,46,0.5)", "rgba(220,220,220,0.5)"],
+                }],
+                labels: ['used', 'free'],
+            },
+            options: {
+                legend: {
+                    onClick: function (e) {
+                        e.stopPropagation();
+                    },
+                },
+            }
+        });
+
+         diskChart = new Chart($("#diskChart").get(0).getContext("2d"), {
+            type: 'horizontalBar',
+            data: {
+                datasets: [{
+                    data: [0],
+                    backgroundColor: "rgba(255,110,46,0.5)",
+                    label: "usage",
+                }],
+                labels: ['/']
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 1,
+                        }
+                    }]
+                },
             legend: {
                 onClick: function (e) {
                     e.stopPropagation();
@@ -477,53 +532,7 @@
         }
     });
 
-    var memChart = new Chart($("#memChart").get(0).getContext("2d"), {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: [0, 0],
-                backgroundColor: ["rgba(255,233,46,0.5)", "rgba(220,220,220,0.5)"],
-            }, {
-                data: [0, 0],
-                backgroundColor: ["rgba(255,233,46,0.5)", "rgba(220,220,220,0.5)"],
-            }],
-            labels: ['used', 'free'],
-        },
-        options: {
-            legend: {
-                onClick: function (e) {
-                    e.stopPropagation();
-                },
-            },
-        }
-    });
 
-    var diskChart = new Chart($("#diskChart").get(0).getContext("2d"), {
-        type: 'horizontalBar',
-        data: {
-            datasets: [{
-                data: [0],
-                backgroundColor: "rgba(255,110,46,0.5)",
-                label: "usage",
-            }],
-            labels: ['/']
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 1,
-                    }
-                }]
-            },
-            legend: {
-                onClick: function (e) {
-                    e.stopPropagation();
-                },
-            },
-        }
-    });
 
     function average(array) {
         var sum = 0;
@@ -538,7 +547,7 @@
         return sum / array.length;
     }
 
-    var ws = new WebSocket("ws://" + location.host + "/Systeminfo");
+
     ws.onmessage = function (e) {
         var callback = $.parseJSON(e.data);
         $("#log_info").html(callback.log_info);
