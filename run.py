@@ -53,7 +53,8 @@ class LoginHandler(tornado.web.RequestHandler):
             return
         cursor = self.application.conn.cursor()
         cursor.execute('SELECT PASSWORD FROM USER WHERE NAME=:name', {'name': USERNAME})
-        if cursor.fetchone()[0] == PASSWORD:
+        result = cursor.fetchone()
+        if result and result[0] == PASSWORD:
             self.set_secure_cookie('login', 'admin', expires_days=None)
             self.write('ok')
         else:
@@ -376,7 +377,10 @@ class pathHandler(tornado.web.RequestHandler):
                 os.access(os.path.join(path, filename), os.R_OK) for filename in filenames])
             return urlnames, permissions, sizes, owners, groups, mtimes, accesses
 
-        path, dirnames, filenames = next(os.walk('/' + path))
+        try:
+            path, dirnames, filenames = next(os.walk('/' + path))
+        except StopIteration:
+            return
 
         urlnames, permissions, sizes, owners, groups, mtimes, accesses = getFileInfo(
             path, dirnames, filenames)
