@@ -217,7 +217,7 @@
                         </div>
                         <div class="mr-5">CPU</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#cpudetail">
+                    <a class="card-footer text-white clearfix small z-1" id="cpu_scroll">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -233,7 +233,7 @@
                         </div>
                         <div class="mr-5">Memory</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#memorydetail">
+                    <a class="card-footer text-white clearfix small z-1" id="memory_scroll">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -249,7 +249,7 @@
                         </div>
                         <div class="mr-5">Disk</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#diskdetail">
+                    <a class="card-footer text-white clearfix small z-1" id="disk_scroll">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -265,7 +265,7 @@
                         </div>
                         <div class="mr-5">Network</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#networkdetail">
+                    <a class="card-footer text-white clearfix small z-1" id="network_scroll">
                         <span class="float-left">View Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -616,11 +616,35 @@
         $(".content-wrapper .row:first .card-body").eq(2).children(".mr-5").html("Disk&nbsp;&nbsp;&nbsp;&nbsp;" + diskaverage + "%");
         $(".content-wrapper .row:first .card-body").eq(3).children(".mr-5").html("Network&nbsp;&nbsp;&nbsp;&nbsp;" + network + "M");
 
+    };
+
+    $(function () {
         $("#logout_btn").click(function () {
             Cookies.remove('login');
             Cookies.remove('_xsrf');
         });
-    }
+
+        $("#cpu_scroll").click(function () {
+            $('html,body').animate({
+                "scrollTop": $("#cpudetail").offset().top - 56
+            }, 1000);
+        });
+        $("#network_scroll").click(function () {
+            $('html,body').animate({
+                "scrollTop": $("#networkdetail").offset().top - 56
+            }, 1000);
+        });
+        $("#memory_scroll").click(function () {
+            $('html,body').animate({
+                "scrollTop": $("#memorydetail").offset().top - 56
+            }, 1000);
+        });
+        $("#disk_scroll").click(function () {
+            $('html,body').animate({
+                "scrollTop": $("#diskdetail").offset().top - 56
+            }, 1000);
+        });
+    })
 </script>
 
 
