@@ -54,7 +54,7 @@ class LoginHandler(tornado.web.RequestHandler):
         cursor = self.application.conn.cursor()
         cursor.execute('SELECT PASSWORD FROM USER WHERE NAME=:name', {'name': USERNAME})
         if cursor.fetchone()[0] == PASSWORD:
-            self.set_secure_cookie('login', 'admin')
+            self.set_secure_cookie('login', 'admin', expires_days=None)
             self.write('ok')
         else:
             self.write('Login Failed')

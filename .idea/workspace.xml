@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9f34360c-32b2-448f-af48-f21614ad688f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/static/Chart.bundle.min.js" afterPath="$PROJECT_DIR$/static/Chart.bundle.min.js" />
-      <change beforePath="$PROJECT_DIR$/static/jquery-3.2.1.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/vendor/jquery/jquery.js" afterPath="$PROJECT_DIR$/static/vendor/jquery/jquery.js" />
-      <change beforePath="$PROJECT_DIR$/static/vendor/jquery/jquery.min.js" afterPath="$PROJECT_DIR$/static/vendor/jquery/jquery.min.js" />
+      <change beforePath="$PROJECT_DIR$/run.py" afterPath="$PROJECT_DIR$/run.py" />
+      <change beforePath="$PROJECT_DIR$/template/about.html" afterPath="$PROJECT_DIR$/template/about.html" />
+      <change beforePath="$PROJECT_DIR$/template/authors.html" afterPath="$PROJECT_DIR$/template/authors.html" />
+      <change beforePath="$PROJECT_DIR$/template/index.html" afterPath="$PROJECT_DIR$/template/index.html" />
+      <change beforePath="$PROJECT_DIR$/template/path.html" afterPath="$PROJECT_DIR$/template/path.html" />
+      <change beforePath="$PROJECT_DIR$/template/processes.html" afterPath="$PROJECT_DIR$/template/processes.html" />
+      <change beforePath="$PROJECT_DIR$/template/vnc.html" afterPath="$PROJECT_DIR$/template/vnc.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +21,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/LiteYun$test.coverage" NAME="test Coverage Results" MODIFIED="1514635894761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LiteYun$run.coverage" NAME="run Coverage Results" MODIFIED="1520073673041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lite_Yun$run.coverage" NAME="run Coverage Results" MODIFIED="1520330559711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lite_Yun$run.coverage" NAME="run Coverage Results" MODIFIED="1520332201816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -65,11 +68,23 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="436" column="46" lean-forward="true" selection-start-line="436" selection-start-column="46" selection-end-line="436" selection-end-column="46" />
+            <state relative-caret-position="550">
+              <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
               <folding>
                 <element signature="e#48#61#0" expanded="true" />
-                <marker date="1520251770141" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
+                <marker date="1520334646353" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="about.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/about.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5927">
+              <caret line="280" column="31" lean-forward="true" selection-start-line="280" selection-start-column="31" selection-end-line="280" selection-end-column="31" />
+              <folding>
+                <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -85,18 +100,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Chart.bundle.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/Chart.bundle.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="favicon.ico" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/favicon.ico">
           <provider selected="true" editor-type-id="images">
@@ -104,27 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/about.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5236">
-              <caret line="241" column="83" lean-forward="false" selection-start-line="241" selection-start-column="83" selection-end-line="241" selection-end-column="83" />
-              <folding>
-                <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="authors.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/authors.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="292" column="30" lean-forward="true" selection-start-line="292" selection-start-column="30" selection-end-line="292" selection-end-column="30" />
+            <state relative-caret-position="220">
+              <caret line="325" column="88" lean-forward="false" selection-start-line="325" selection-start-column="88" selection-end-line="325" selection-end-column="88" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -135,11 +122,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="path.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/path.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="405" column="58" lean-forward="true" selection-start-line="405" selection-start-column="4" selection-end-line="405" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1357">
-              <caret line="459" column="34" lean-forward="false" selection-start-line="459" selection-start-column="34" selection-end-line="459" selection-end-column="34" />
+            <state relative-caret-position="408">
+              <caret line="396" column="84" lean-forward="true" selection-start-line="396" selection-start-column="69" selection-end-line="396" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -148,8 +145,8 @@
       <file leaf-file-name="vnc.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/vnc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5055">
-              <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+            <state relative-caret-position="132">
+              <caret line="255" column="84" lean-forward="false" selection-start-line="255" selection-start-column="84" selection-end-line="255" selection-end-column="84" />
               <folding>
                 <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -157,21 +154,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="path.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/path.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="processes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/processes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+            <state relative-caret-position="30">
+              <caret line="332" column="84" lean-forward="false" selection-start-line="332" selection-start-column="84" selection-end-line="332" selection-end-column="84" />
               <folding>
                 <element signature="e#1485#1492#0" expanded="true" />
                 <element signature="e#2299#2306#0" expanded="true" />
@@ -187,6 +174,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -197,7 +185,6 @@
       <find>30000</find>
       <find>Dashb</find>
       <find>blan</find>
-      <find>logout</find>
       <find>login</find>
       <find>ml-auto</find>
       <find>ml</find>
@@ -209,6 +196,7 @@
       <find>about</find>
       <find>ok</find>
       <find>get</find>
+      <find>logout</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,14 +215,16 @@
         <option value="$PROJECT_DIR$/static/noVNC/utils/websockify/websockify.py" />
         <option value="$PROJECT_DIR$/template/cards.html" />
         <option value="$PROJECT_DIR$/template/navbar.html" />
-        <option value="$PROJECT_DIR$/template/vnc.html" />
-        <option value="$PROJECT_DIR$/template/path.html" />
-        <option value="$PROJECT_DIR$/template/processes.html" />
-        <option value="$PROJECT_DIR$/template/index.html" />
         <option value="$PROJECT_DIR$/template/login.html" />
+        <option value="$PROJECT_DIR$/static/language.js" />
+        <option value="$PROJECT_DIR$/static/zh-CN/index.properties" />
         <option value="$PROJECT_DIR$/run.py" />
-        <option value="$PROJECT_DIR$/template/about.html" />
+        <option value="$PROJECT_DIR$/template/index.html" />
         <option value="$PROJECT_DIR$/template/authors.html" />
+        <option value="$PROJECT_DIR$/template/path.html" />
+        <option value="$PROJECT_DIR$/template/vnc.html" />
+        <option value="$PROJECT_DIR$/template/processes.html" />
+        <option value="$PROJECT_DIR$/template/about.html" />
       </list>
     </option>
   </component>
@@ -245,8 +235,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1044" />
+    <option name="x" value="293" />
+    <option name="width" value="1292" />
+    <option name="height" value="936" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -276,6 +267,19 @@
               <item name="Lite-Yun" type="b2602c69:ProjectViewProjectNode" />
               <item name="Lite-Yun" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lite-Yun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lite-Yun" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lite-Yun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lite-Yun" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="sb-admin.js" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="Lite-Yun" type="b2602c69:ProjectViewProjectNode" />
@@ -471,20 +475,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/template/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/path.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/processes.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -528,7 +518,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#61#0" expanded="true" />
-            <marker date="1520251770141" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
+            <marker date="1520334646353" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
           </folding>
         </state>
       </provider>
@@ -678,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/sb-admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -693,78 +676,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/path.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5236">
-          <caret line="241" column="83" lean-forward="false" selection-start-line="241" selection-start-column="83" selection-end-line="241" selection-end-column="83" />
-          <folding>
-            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/processes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding>
-            <element signature="e#1485#1492#0" expanded="true" />
-            <element signature="e#2299#2306#0" expanded="true" />
-            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.local/share/applications/jetbrains-pycharm.desktop">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/authors.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="292" column="30" lean-forward="true" selection-start-line="292" selection-start-column="30" selection-end-line="292" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/vnc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5055">
-          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="436" column="46" lean-forward="true" selection-start-line="436" selection-start-column="46" selection-end-line="436" selection-end-column="46" />
-          <folding>
-            <element signature="e#48#61#0" expanded="true" />
-            <marker date="1520251770141" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,11 +706,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/language.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2354">
+          <caret line="148" column="15" lean-forward="true" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/zh-CN/index.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/sb-admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/authors.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="325" column="88" lean-forward="false" selection-start-line="325" selection-start-column="88" selection-end-line="325" selection-end-column="88" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/vnc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="255" column="84" lean-forward="false" selection-start-line="255" selection-start-column="84" selection-end-line="255" selection-end-column="84" />
+          <folding>
+            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/processes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="332" column="84" lean-forward="false" selection-start-line="332" selection-start-column="84" selection-end-line="332" selection-end-column="84" />
+          <folding>
+            <element signature="e#1485#1492#0" expanded="true" />
+            <element signature="e#2299#2306#0" expanded="true" />
+            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/path.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="405" column="58" lean-forward="true" selection-start-line="405" selection-start-column="4" selection-end-line="405" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1357">
-          <caret line="459" column="34" lean-forward="false" selection-start-line="459" selection-start-column="34" selection-end-line="459" selection-end-column="34" />
+        <state relative-caret-position="408">
+          <caret line="396" column="84" lean-forward="true" selection-start-line="396" selection-start-column="69" selection-end-line="396" selection-end-column="84" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+          <folding>
+            <element signature="e#48#61#0" expanded="true" />
+            <marker date="1520334646353" expanded="true" signature="1207:1249" ph="SELECT PASSW... USER" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5927">
+          <caret line="280" column="31" lean-forward="true" selection-start-line="280" selection-start-column="31" selection-end-line="280" selection-end-column="31" />
+          <folding>
+            <element signature="n#li#0;n#ul#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

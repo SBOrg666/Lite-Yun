@@ -323,18 +323,26 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login?next=%2F">Logout</a>
+                        <a class="btn btn-primary" href="login?next=%2F" id="logout_btn">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
         <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/js.cookie-2.2.0.min.js"></script>
         <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
         <!-- Custom scripts for all pages-->
         <script src="/static/js/sb-admin.min.js"></script>
+
+        <script>
+                    $("#logout_btn").click(function () {
+            Cookies.remove('login');
+            Cookies.remove('_xsrf');
+        });
+        </script>
     </div>
 </body>
 
