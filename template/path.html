@@ -18,6 +18,11 @@
     <link href="/static/css/sb-admin.css" rel="stylesheet">
     <link href="/static/jQuery-File-Upload/css/style.css" rel="stylesheet">
     <link href="/static/jQuery-File-Upload/css/jquery.fileupload.css" rel="stylesheet">
+
+    <!-- Page level plugin CSS-->
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -258,87 +263,80 @@
                 <p>
                     <button class="btn btn-primary" data-complete-text="Download" id="download_btn">Download</button>
                     {% if writable %}
-                    <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn">Upload</button>
-                    <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn">Delete</button>
-                    <input type="file" name="files" data-url="/upload" id="upload_input"
-                           style="visibility:hidden;height:0;width:0;display:block"
-                           multiple>
-                <div id="progress" class="progress">
-                    <div class="progress-bar progress-bar-success"></div>
-                </div>
-                {% else %}
-                <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn" disabled="disabled">Upload
-                </button>
-                <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn" disabled="disabled">Delete
-                </button>
-                {% end %}
-                </p>
-                <div>
-                    <div class="list-group-item">
-                        <div class="row">
-                <span class="col-3" style="position:relative;">
-                  <input type="checkbox" id="check_all" style="zoom:180%;"/>
-                  <span style="position:absolute;left:50px;">
-                    <span>Name</span>
-                  </span>
-                </span>
-                            <span class="col-3"></span>
-                            <span class="col-1">Permissions</span>
-                            <span class="col-1">Size</span>
-                            <span class="col-1">Owner</span>
-                            <span class="col-1">Group</span>
-                            <span class="col-2">Date Modified</span>
+                        <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn">Upload</button>
+                        <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn">Delete</button>
+                        <input type="file" name="files" data-url="/upload" id="upload_input"
+                               style="visibility:hidden;height:0;width:0;display:block"
+                               multiple>
+                        <div id="progress" class="progress">
+                            <div class="progress-bar progress-bar-success"></div>
                         </div>
-                    </div>
-                    {% for url,dir,permission,size,owner,group,mtime,access in zip(urlnames,dirnames,permissions[0],sizes[0],owners[0],groups[0],mtimes[0],accesses[0])%}
-                    <div class="list-group-item">
-                        <div class="row">
-                <span class="col-3" style="position:relative;">
-                  {% if not access %}
-                  <input type="checkbox" style="zoom:180%;" class="checkboxes" disabled="disabled"/>
-                  <span style="position:absolute;left:50px;">
-                    <a style="color:#868e96;background-color:transparent">{{ dir }}</a>
-                  </span>
-                  {% else %}
-                  <input type="checkbox" style="zoom:180%;" class="checkboxes"/>
-                  <span style="position:absolute;left:50px;">
-                    <a href="{{ url }}">{{ dir }}</a>
-                  </span>
-                  {% end %}
-                </span>
-                            <span class="col-3"></span>
-                            <span class="col-1">{{ permission }}</span>
-                            <span class="col-1">{{ size }}</span>
-                            <span class="col-1">{{ owner }}</span>
-                            <span class="col-1">{{ group }}</span>
-                            <span class="col-2">{{ mtime}}</span>
-                        </div>
-                    </div>
-                    {% end %} {% for filename,permission,size,owner,group,mtime, access in zip(filenames,permissions[1],sizes[1],owners[1],groups[1],mtimes[1],accesses[1])%}
-                    <div class="list-group-item">
-                        <div class="row">
-                <span class="col-3" style="position:relative;">
-                  {% if not access %}
-                  <input type="checkbox" style="zoom:180%;" class="checkboxes" disabled="disabled"/>
-                  <span style="position:absolute;left:50px;">
-                    <span style="color:#868e96;">{{ filename }}</span>
-                  </span>
-                  {% else %}
-                  <input type="checkbox" style="zoom:180%;" class="checkboxes"/>
-                  <span style="position:absolute;left:50px;">
-                    <span style="color:green;">{{ filename }}</span>
-                  </span>
-                  {% end %}
-                </span>
-                            <span class="col-3"></span>
-                            <span class="col-1">{{ permission }}</span>
-                            <span class="col-1">{{ size }}</span>
-                            <span class="col-1">{{ owner }}</span>
-                            <span class="col-1">{{ group }}</span>
-                            <span class="col-2">{{ mtime}}</span>
-                        </div>
-                    </div>
+                    {% else %}
+                        <button class="btn btn-primary" data-complete-text="Upload" id="upload_btn" disabled="disabled">Upload
+                        </button>
+                        <button class="btn btn-danger" data-complete-text="Delete" id="delete_btn" disabled="disabled">Delete
+                        </button>
                     {% end %}
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check_all" style="zoom:180%;"/></th>
+                            <th>Name</th>
+                            <th>Permissions</th>
+                            <th>Size</th>
+                            <th>Owner</th>
+                            <th>Group</th>
+                            <th>Date Modified</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th> </th>
+                            <th>Name</th>
+                            <th>Permissions</th>
+                            <th>Size</th>
+                            <th>Owner</th>
+                            <th>Group</th>
+                            <th>Date Modified</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for url,dir,permission,size,owner,group,mtime,access in zip(urlnames,dirnames,permissions[0],sizes[0],owners[0],groups[0],mtimes[0],accesses[0])%}
+                        <tr>
+                            {% if not access %}
+                                <td><input type="checkbox" style="zoom:180%;" class="checkboxes" disabled="disabled"/></td>
+                                <td><a style="color:#868e96;background-color:transparent">{{ dir }}</a></td>
+                            {% else %}
+                                <td><input type="checkbox" style="zoom:180%;" class="checkboxes"/></td>
+                                <td><a href="{{ url }}">{{ dir }}</a></td>
+                            {% end %}
+                                <td>{{ permission }}</td>
+                                <td>{{ size }}</td>
+                                <td>{{ owner }}</td>
+                                <td>{{ group }}</td>
+                                <td>{{ mtime}}</td>
+                        </tr>
+                        {% end %}
+                        {% for filename,permission,size,owner,group,mtime, access in zip(filenames,permissions[1],sizes[1],owners[1],groups[1],mtimes[1],accesses[1])%}
+                        <tr>
+                            {% if not access %}
+                                <td><input type="checkbox" style="zoom:180%;" class="checkboxes" disabled="disabled"/></td>
+                                <td><span style="color:#868e96;">{{ filename }}</span></td>
+                            {% else %}
+                                <td><input type="checkbox" style="zoom:180%;" class="checkboxes"/></td>
+                                <td><span style="color:green;">{{ filename }}</span></td>
+                            {% end %}
+                                <td>{{ permission }}</td>
+                                <td>{{ size }}</td>
+                                <td>{{ owner }}</td>
+                                <td>{{ group }}</td>
+                                <td>{{ mtime}}</td>
+                        </tr>
+                        {% end %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -405,6 +403,7 @@
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/js.cookie-2.2.0.min.js"></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
@@ -414,11 +413,25 @@
     <script src="/static/jQuery-File-Upload/js/jquery.fileupload.js"></script>
     <script src="/static/jQuery-File-Upload/js/jquery.fileupload-process.js"></script>
     <script src="/static/jQuery-File-Upload/js/jquery.fileupload-validate.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="/static/vendor/datatables/fnAddTr.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/static/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="/static/js/sb-admin-datatables.min.js"></script>
 </div>
 </body>
 
 <script type="text/javascript">
     var urls = new Set();
+
+    $(function(){
+        // $("select[name='dataTable_length']")[0].options[0].selected = false;
+        // $("select[name='dataTable_length']")[0].options[3].selected = true;
+    });
 
     $("#check_all").click(function () {
         if (this.checked === true) {
@@ -438,14 +451,14 @@
 
     $(".checkboxes").click(function () {
         if ($(this).prop("checked") === true) {
-            if ($(this).next().children().eq(0).attr("href")) {
-                urls.add($(this).next().children().eq(0).attr("href").substring(5));
+            if ($(this).parent().next().children().eq(0).attr("href")) {
+                urls.add($(this).parent().next().children().eq(0).attr("href").substring(5));
             } else {
                 var p = $("#path").html().substring(6);
                 if (p === "/") {
-                    urls.add(p + $(this).next().children().eq(0).html());
+                    urls.add(p + $(this).parent().next().children().eq(0).html());
                 } else {
-                    urls.add(p + "/" + $(this).next().children().eq(0).html());
+                    urls.add(p + "/" + $(this).parent().next().children().eq(0).html());
                 }
             }
         } else {
@@ -453,13 +466,13 @@
                 $("#check_all").prop("checked", false);
             }
             if ($(this).next().children().eq(0).attr("href")) {
-                urls.delete($(this).next().children().eq(0).attr("href").substring(5));
+                urls.delete($(this).parent().next().children().eq(0).attr("href").substring(5));
             } else {
                 var p = $("#path").html().substring(6);
                 if (p === "/") {
-                    urls.delete(p + $(this).next().children().eq(0).html());
+                    urls.delete(p + $(this).parent().next().children().eq(0).html());
                 } else {
-                    urls.delete(p + "/" + $(this).next().children().eq(0).html());
+                    urls.delete(p + "/" + $(this).parent().next().children().eq(0).html());
                 }
             }
         }
