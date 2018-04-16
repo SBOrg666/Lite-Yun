@@ -24,6 +24,7 @@ import tornado.concurrent
 import tornado.gen
 import tornado.httpserver
 import tornado.ioloop
+import tornado.iostream
 import tornado.options
 import tornado.web
 import tornado.websocket
@@ -257,6 +258,9 @@ class ProcessesInfoHandler(tornado.websocket.WebSocketHandler):
 class downloadHandler(tornado.web.RequestHandler):
     executor = ThreadPoolExecutor()
 
+    def initialize(self):
+        self.tfile = None
+
     def get_current_user(self):
         loggedin = self.get_secure_cookie('login', None)
         return loggedin
@@ -289,17 +293,28 @@ class downloadHandler(tornado.web.RequestHandler):
     def get(self):
         tmpfile = self.get_argument('name', None)
         if tmpfile:
+            self.tfile = tmpfile
             tmpfile = os.path.join(os.path.split(__file__)[
                                        0], urllib.parse.unquote(tmpfile))
             self.set_header('Content-Type', 'application/octet-stream')
             self.set_header('Content-Disposition',
                             'attachment; filename="files.zip"')
             if os.path.exists(tmpfile):
-                with open(tmpfile, 'rb') as f:
-                    for line in f:
-                        yield self.write(line)
-                        yield self.flush()
-                os.remove(tmpfile)
+                try:
+                    with open(tmpfile, 'rb') as f:
+                        for line in f:
+                            yield self.write(line)
+                            yield self.flush()
+                except tornado.iostream.StreamClosedError:
+                    pass
+
+    def on_connection_close(self):
+        if self.tfile and os.path.exists(self.tfile):
+            os.remove(self.tfile)
+
+    def on_finish(self):
+        if self.tfile and os.path.exists(self.tfile):
+            os.remove(self.tfile)
 
 
 class uploadHandler(tornado.web.RequestHandler):
